@@ -6,14 +6,14 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-        <title>Rust live-stream voting</title>
-        <meta name="description" content="Vote for the next Rust live-coding stream topic">
+        <title>Research Paper voting</title>
+        <meta name="description" content="Vote for the next paper for the reading group">
         <meta name="author" content="Jon Gjengset et. al.">
 	{% block head %}{% endblock %}
     </head>
     <body>
         <nav class="navbar navbar-dark bg-primary">
-          <span class="navbar-brand mb-0 h1">Vote for the next Rust live-coding stream!</span>
+          <span class="navbar-brand mb-0 h1">Vote for the next reading group paper!</span>
         </nav>
         <div class="container pt-3">
             {% block content %}{% endblock content %}

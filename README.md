@@ -1,14 +1,14 @@
 This crate uses [ranked choice
 voting](https://ballotpedia.org/Ranked-choice_voting_(RCV)) to allow
-users to vote on the next [Rust live-coding
-stream](https://youtube.com/c/JonGjengset). It is not specific to this
+users to vote on the next Reading Group paper. It was only lightly adapted from [jonhoo](https://github.com/Jonhoo)'s [Rust live-coding
+stream](https://youtube.com/c/JonGjengset) voting system. It is not specific to this
 particular voting topic beyond some labels here and there though.
 
-The basic idea is that users rank the candidates (stream ideas)
+The basic idea is that users rank the candidates (paper ideas)
 according to which they would rather watch, and an election is run
 before each stream to determine the topic of the stream. Since ranked
 choice voting lets users specify multiple preferences, this process can
-then be repeated for the next stream, where it will go to each user's
+then be repeated for the next paper, where it will go to each user's
 second preferred candidate, etc.
 
 This implementation is *not* written to be secure or efficient. Quite to

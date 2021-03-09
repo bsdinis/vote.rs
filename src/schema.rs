@@ -15,7 +15,22 @@ mod schema {
             id -> Integer,
             title -> Text,
             body -> Text,
+            url_link -> Nullable<Text>,
             done -> Bool,
+        }
+    }
+
+    table! {
+        label_names {
+            id -> Integer,
+            name -> Text,
+        }
+    }
+
+    table! {
+        labels (label_id, item_id) {
+            label_id -> Integer,
+            item_id -> Integer,
         }
     }
 
@@ -29,7 +44,11 @@ mod schema {
 
     joinable!(votes -> items (item_id));
     joinable!(votes -> users (user_id));
-    allow_tables_to_appear_in_same_query!(users, items, votes);
+
+    joinable!(labels -> items (item_id));
+    joinable!(labels -> label_names (label_id));
+
+    allow_tables_to_appear_in_same_query!(users, items, votes, labels, label_names);
 }
 
 use self::schema::users;
@@ -46,6 +65,7 @@ pub struct Item {
     pub id: i32,
     pub title: String,
     pub body: String,
+    pub url: Option<String>,
     pub done: bool,
 }
 

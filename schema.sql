@@ -10,7 +10,23 @@ CREATE TABLE items (
     id INTEGER PRIMARY KEY,
     title TEXT NOT NULL,
     body TEXT NOT NULL,
+    url_link TEXT,
     done BOOL NOT NULL DEFAULT false
+);
+
+DROP TABLE IF EXISTS label_names;
+CREATE TABLE label_names (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE
+);
+
+DROP TABLE IF EXISTS labels
+CREATE TABLE labels (
+    label_id INTEGER NOT NULL,
+    item_id INTEGER NOT NULL,
+
+    FOREIGN KEY(label_id) REFERENCES labels(id)
+    FOREIGN KEY(item_id) REFERENCES items(id)
 );
 
 DROP TABLE IF EXISTS votes;
@@ -21,6 +37,7 @@ CREATE TABLE votes (
 
     FOREIGN KEY(user_id) REFERENCES users(id)
     FOREIGN KEY(item_id) REFERENCES items(id)
+
 );
 CREATE UNIQUE INDEX no_dup_votes ON votes(user_id, item_id);
 CREATE INDEX ballot ON votes(user_id ASC, ordinal ASC);
