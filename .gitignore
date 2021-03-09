@@ -19,3 +19,5 @@ Cargo.lock
 
 # Backup files.
 *.bak
+
+__pycache__

@@ -20,7 +20,7 @@ CREATE TABLE label_names (
     name TEXT NOT NULL UNIQUE
 );
 
-DROP TABLE IF EXISTS labels
+DROP TABLE IF EXISTS labels;
 CREATE TABLE labels (
     label_id INTEGER NOT NULL,
     item_id INTEGER NOT NULL,
