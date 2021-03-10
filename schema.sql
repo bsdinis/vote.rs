@@ -14,20 +14,6 @@ CREATE TABLE items (
     done BOOL NOT NULL DEFAULT false
 );
 
-DROP TABLE IF EXISTS label_names;
-CREATE TABLE label_names (
-    id INTEGER PRIMARY KEY,
-    name TEXT NOT NULL UNIQUE
-);
-
-DROP TABLE IF EXISTS labels;
-CREATE TABLE labels (
-    label_id INTEGER NOT NULL,
-    item_id INTEGER NOT NULL,
-
-    FOREIGN KEY(label_id) REFERENCES labels(id)
-    FOREIGN KEY(item_id) REFERENCES items(id)
-);
 
 DROP TABLE IF EXISTS votes;
 CREATE TABLE votes (

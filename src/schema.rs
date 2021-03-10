@@ -21,20 +21,6 @@ mod schema {
     }
 
     table! {
-        label_names {
-            id -> Integer,
-            name -> Text,
-        }
-    }
-
-    table! {
-        labels (label_id, item_id) {
-            label_id -> Integer,
-            item_id -> Integer,
-        }
-    }
-
-    table! {
         votes (user_id, item_id) {
             user_id -> Integer,
             item_id -> Integer,
@@ -45,10 +31,7 @@ mod schema {
     joinable!(votes -> items (item_id));
     joinable!(votes -> users (user_id));
 
-    joinable!(labels -> items (item_id));
-    joinable!(labels -> label_names (label_id));
-
-    allow_tables_to_appear_in_same_query!(users, items, votes, labels, label_names);
+    allow_tables_to_appear_in_same_query!(users, items, votes);
 }
 
 use self::schema::users;
@@ -118,10 +101,6 @@ impl Item {
             .select((self::schema::items::all_columns, ordinal.nullable()))
             .load::<(Item, Option<i32>)>(conn)
             .unwrap()
-    }
-
-    pub fn get_labels(&self) -> Vec<String> {
-        vec!["weird_label".to_string()]
     }
 }
 

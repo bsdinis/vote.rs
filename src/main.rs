@@ -29,9 +29,7 @@ pub struct DbConn(SqliteConnection);
 #[derive(Debug, Serialize)]
 struct Context {
     winner: Option<Item>,
-    winner_labels: Vec<String>,
     second: Option<Item>,
-    second_labels: Vec<String>,
     items: Vec<(Item, Option<i32>)>,
 }
 
@@ -39,9 +37,7 @@ impl Context {
     pub fn new(conn: &DbConn) -> Context {
         Context {
             winner: Vote::run_election(conn),
-            winner_labels: vec![],
             second: None,
-            second_labels: vec![],
             items: Vec::new(), // not used if not logged in
         }
     }
@@ -49,13 +45,9 @@ impl Context {
     pub fn for_user(user: Auth, conn: &DbConn) -> Context {
         let winner = Vote::run_election(conn);
         let second = Vote::run_second_election(conn, &winner);
-        let winner_labels = winner.as_ref().map(|i| i.get_labels()).unwrap_or(vec![]);
-        let second_labels = second.as_ref().map(|i| i.get_labels()).unwrap_or(vec![]);
         Context {
             winner,
-            winner_labels,
             second,
-            second_labels,
             items: Item::for_user(user.0, conn),
         }
     }
