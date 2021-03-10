@@ -12,9 +12,6 @@
     <h5 class="card-title">{{ winner.title }}</h5>
     {% endif %}
     <p class="card-text">{{ winner.body }} </p>
-    {% for lbl in winner_labels -%}
-    <p class="card-text"> {{ lbl }} </p>
-    {%- endfor %}
   </div>
 </div>
 {% endif %}
