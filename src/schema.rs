@@ -119,6 +119,10 @@ impl Item {
             .load::<(Item, Option<i32>)>(conn)
             .unwrap()
     }
+
+    pub fn get_labels(&self) -> Vec<String> {
+        vec!["weird_label".to_string()]
+    }
 }
 
 impl Vote {

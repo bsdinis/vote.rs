@@ -6,4 +6,10 @@ import sys
 
 if __name__ == '__main__':
     db = DB(DB_FILENAME)
-    print(db.add_item(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4:]))
+    if len(sys.argv) > 4:
+        print(db.add_item(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4:]))
+    elif len(sys.argv) > 3:
+        print(db.add_item(sys.argv[1], sys.argv[2], sys.argv[3]))
+    else:
+        print(db.add_item(sys.argv[1], sys.argv[2]))
+

@@ -6,8 +6,15 @@
     Next stream unless you vote!
   </div>
   <div class="card-body">
+    {% if winner.url %}
+    <h5 class="card-title"> <a href= {{ winner.url }}>{{ winner.title }}</a></h5>
+    {% else %}
     <h5 class="card-title">{{ winner.title }}</h5>
-    <p class="card-text">{{ winner.body }}</p>
+    {% endif %}
+    <p class="card-text">{{ winner.body }} </p>
+    {% for lbl in winner_labels -%}
+    <p class="card-text"> {{ lbl }} </p>
+    {%- endfor %}
   </div>
 </div>
 {% endif %}

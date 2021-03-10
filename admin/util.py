@@ -56,7 +56,7 @@ class DB:
         self.conn.commit()
         return id
 
-    def add_item(self, title: str, body: str, url_link: Optional[str], labels: List[str] = [], cursor = None) -> int:
+    def add_item(self, title: str, body: str, url_link: Optional[str] = None, labels: List[str] = [], cursor = None) -> int:
         cur = self.cursor(cursor)
         cur.execute('select id, name from label_names')
         label_ids = {name: id for id, name in cur.fetchall()}
